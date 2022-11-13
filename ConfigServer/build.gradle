@@ -1,0 +1,44 @@
+buildscript {
+    ext {
+        springBootVersion = '2.5.12'
+    }
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+    }
+}
+
+subprojects{
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'io.configserver'
+    version = '1.0.0'
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    ext {
+        springCloudVersion = '2020.0.5'
+    }
+
+    dependencies {
+        implementation('org.projectlombok:lombok')
+        annotationProcessor('org.projectlombok:lombok')
+    }
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
+

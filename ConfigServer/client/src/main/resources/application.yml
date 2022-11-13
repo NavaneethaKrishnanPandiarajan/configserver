@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: notification
+  profiles:
+    active: app0
+  config:
+    import: optional:configserver:http://localhost:8844/config/v1

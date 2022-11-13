@@ -1,0 +1,5 @@
+rootProject.name = 'ConfigServer'
+include 'server'
+include 'client'
+include 'placeholder'
+
